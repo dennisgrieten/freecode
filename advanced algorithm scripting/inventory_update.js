@@ -1,19 +1,27 @@
 function updateInventory(arr1, arr2) {
     // All inventory must be accounted for or you're fired!
-    arr2.forEach(function (item, index) {
-        for (var i = 0; i < arr1.length; i++) {
-            console.log(item[1], arr1[i][1]);
-            if (item[1] === arr1[i][1]) {
-                item[0] += arr1[i][0];
+    var flag = true;
 
-            } else {
-                arr1.push(item);
+    for (var i = 0; i < arr2.length; i++) {
+        for (var j = 0; j < arr1.length; j++) {
+            if (arr2[i][1] === arr1[j][1]) {
+                arr1[j][0] += arr2[i][0];
+                flag = false;
+                break;
             }
         }
-    });
 
-    console.log("---------");
-    return arr1;
+        if (flag) {
+            arr1.push(arr2[i]);
+        }
+        flag = true;
+    }
+
+    return arr1.sort(inventorySort);
+}
+
+function inventorySort(a, b) {
+    return a[1].charCodeAt(0) - b[1].charCodeAt(0);
 }
 
 // Example inventory lists
