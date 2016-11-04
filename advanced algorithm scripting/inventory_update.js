@@ -14,6 +14,7 @@ function updateInventory(arr1, arr2) {
         if (flag) {
             arr1.push(arr2[i]);
         }
+
         flag = true;
     }
 
