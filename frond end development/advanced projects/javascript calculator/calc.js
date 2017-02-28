@@ -1,19 +1,67 @@
-addEventListener("load", init, false);
+var entries = [];
+var currentNumber = "";
+var operand = "";
 
-var total;
-var current = 0;
+function enterValue(val) {
+    var display = document.getElementById("display");
 
-function display(value) {
-    document.getElementById('calculator-screen').innerHTML = value;
-}
+    switch (val) {
+        case "=":
+            if (entries.length === 1) {
+                break;
+            }
+            if (currentNumber) {
+                entries.push(currentNumber);
+            }
+            display.value = eval(entries.join(''));
+            entries = [];
+            entries.push(display.value);
+            currentNumber = "";
+            operand = "";
+            break;
 
-function enterValue(value) {
-    alert(current);
-    if (current === 0) {
-        current = value;
-    } else {
-        current = current * 10 + value;
+        case "ac":
+            display.value = "0";
+            currentNumber = "";
+            operand = "";
+            entries = [];
+            break;
+
+        case "ce":
+            if (!currentNumber) {
+                entries = [];
+                break;
+            }
+            currentNumber = "";
+            display.value = "0";
+            break;
+
+        case ".":
+            if (current.includes(".")) {
+                break;
+            }
+
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+            if (currentNumber) {
+                entries.push(currentNumber);
+                currentNumber = "";
+            }
+            operand = val;
+            display.value = operand;
+            break;
+
+        default:
+            if (operand) {
+                entries.push(operand);
+                operand = "";
+            }
+            if (entries.length === 1) {
+                break;
+            }
+            currentNumber += val;
+            display.value = currentNumber;
     }
-
-    display(current);
 }

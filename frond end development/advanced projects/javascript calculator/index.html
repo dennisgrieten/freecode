@@ -1,31 +1,50 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Javascript Calculator</title>
     <script src="calc.js"></script>
-    <link rel="stylesheet" href="css/style.css"></style>
+    <link rel="stylesheet" href="css/style.css">
+    </style>
 </head>
+
 <body>
-    <div id ="calculator">
-        <div id="calculator-current">0</div>
-        <div id="calculator-total">0</div>
-        <button onclick="clearAll()">ac</button>
-        <button onclick="clearCurrent()">ce</button>
-        <button onclick="divide()">/</button>
-        <button onclick="multiply()">*</button>
-        <button onclick="subtract()">-</button>
-        <button onclick="add()">+</button>
-        <button onclick="equals()">=</button>
-        <button onclick="enterValue(7)">7</button>
-        <button onclick="enterValue(8)">8</button>
-        <button onclick="enterValue(9)">9</button>
-        <button onclick="enterValue(4)">4</button>
-        <button onclick="enterValue(5)">5</button>
-        <button onclick="enterValue(6)">6</button>
-        <button onclick="enterValue(1)">1</button>
-        <button onclick="enterValue(2)">2</button>
-        <button onclick="enterValue(3)">3</button>
-        <button onclick="enterValue(0)">0</button>
+    <div id="calculator">
+        <p>
+            <input type="text" id="display" value="0" readonly />
+        </p>
+        <p>
+            <button class="button-red" onclick="enterValue('ac')">ac</button>
+            <button class="button-red" onclick="enterValue('ce')">ce</button>
+            <button class="button-blue" value="/" onclick="enterValue('/')">&divide</button>
+            <button class="button-blue" value="*" onclick="enterValue('*')">&#215</button>
+        </p>
+        <p>
+            <button value="7" onclick="enterValue('7')">7</button>
+            <button value="8" onclick="enterValue('8')">8</button>
+            <button value="9" onclick="enterValue('9')">9</button>
+            <button class="button-blue" value="-" onclick="enterValue('-')">-</button>
+
+        </p>
+        <p>
+            <button value="4" onclick="enterValue('4')">4</button>
+            <button value="5" onclick="enterValue('5')">5</button>
+            <button value="6" onclick="enterValue('6')">6</button>
+            <button class="button-blue" value="+" onclick="enterValue('+')">+</button>
+
+        </p>
+        <p>
+            <button value="1" onclick="enterValue('1')">1</button>
+            <button value="2" onclick="enterValue('2')">2</button>
+            <button value="3" onclick="enterValue('3')">3</button>
+
+        </p>
+        <p>
+            <button id="button-zero" value="0" onclick="enterValue('0')">0</button>
+            <button value="=" onclick="enterValue('.')">.</button>
+            <button id="button-equal" value="=" onclick="enterValue('=')">=</button>
+        </p>
     </div>
 </body>
+
 </html>
